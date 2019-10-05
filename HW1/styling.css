@@ -1,10 +1,10 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: small;
+    font-size: medium;
     color: darkmagenta;
 }
 
 p {
-    border: 4mm ridge rgba(170, 50, 220, .6);
+    border: ;
     color: black;
 }
