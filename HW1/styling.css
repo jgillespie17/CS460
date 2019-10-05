@@ -1,10 +1,60 @@
-* {
+li {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: medium;
     color: darkmagenta;
 }
 
+body {
+    border-image: url("Roman_Empire_Trajan_117AD.png");
+    border-image-slice: 20;
+    border-image-width: 20;
+}
+
 p {
-    border: ;
     color: black;
+    text-align: center;
+}
+
+p a {
+    border: 1mm solid white;
+}
+
+.container {
+    display: flex;
+    text-align: center;
+}
+
+.container>* {
+    margin: 0 10px;
+    flex: 1;
+}
+
+ul {
+    margin: 0 auto;
+    font-size: xx-large;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 5px;
+    text-align: left;
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+    width: 90%;
 }
