@@ -1,13 +1,14 @@
 li {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: medium;
-    color: darkmagenta;
+    color: rgb(30, 0, 139);
+    align-content: center;
+    text-align: left;
 }
 
 body {
-    border-image: url("Roman_Empire_Trajan_117AD.png");
-    border-image-slice: 20;
-    border-image-width: 20;
+    border-left: 4em solid white;
+    border-right: 4em solid white;
 }
 
 p {
@@ -31,7 +32,7 @@ p a {
 
 ul {
     margin: 0 auto;
-    font-size: xx-large;
+    font-size: large;
 }
 
 table.center {
@@ -55,6 +56,4 @@ td {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 50%;
-    width: 90%;
 }
