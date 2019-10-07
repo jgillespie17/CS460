@@ -20,16 +20,6 @@ p a {
     border: 1mm solid white;
 }
 
-.container {
-    display: flex;
-    text-align: center;
-}
-
-.container>* {
-    margin: 0 10px;
-    flex: 1;
-}
-
 ul {
     margin: 0 auto;
     font-size: large;
@@ -57,10 +47,6 @@ td {
     align-content: center;
 }
 
-body.page3 {
-    border-top-color: rgb(112, 41, 99);
-}
-
 .bar {
     width: 100%;
     height: 1px;
@@ -71,4 +57,5 @@ body.page3 {
 
 div {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
