@@ -13,37 +13,45 @@
 <body>
 
     <div class="container">
-        <h1>DnD(5e) Stat Roller</h1>
-        <div class="row">
-            <div class="col">
-                <form>
+        <form id="generateSheet">
+            <h1>DnD(5e) Stat Roller</h1>
+            <div class="row">
+                <div class="col">
+
                     <div class="form-group">
-                        <label for="formGroupCharacterInfo">Select Class</label>
-                        <input type="text" class="form-control" id="formGroupCharacterInfo" placeholder="ex. Wizard">
+                        <label for="Class">Select Class</label>
+                        <input type="text" class="form-control" id="Class" placeholder="ex. Wizard">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupCharacterInfo">Select Race</label>
-                        <input type="text" class="form-control" id="formGroupCharacterInfo" placeholder="ex. Human">
+                        <label for="Race">Select Race</label>
+                        <input type="text" class="form-control" id="Race" placeholder="ex. Human">
                     </div>
-                </form>
 
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="formGroupCharacterInfo">Background</label>
-                    <input type="text" class="form-control" id="formGroupCharacterInfo" placeholder="ex. Soldier, Sage">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupCharacterInfo">Select Starting Gold</label>
-                    <input type="int" class="form-control" id="formGroupCharacterInfo" placeholder="ex. 100, 1250">
-                </div>
-            </div>
-        </div>
-        <button id="generate" onclick="makeSheet()">Generate Sheet</button>
-        <div id="theSheet">
 
-        </div>
-        <script src="hw2.js"></script>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="Background">Background</label>
+                        <input type="text" class="form-control" id="Background" placeholder="ex. Soldier, Sage">
+                    </div>
+                    <div class="form-group">
+                        <label for="Level">Starting Level</label>
+                        <input type="number" class="form-control" id="Level" placeholder="ex. 1-20">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="generate" id="generate">
+            </div>
+        </form>
+    </div>
+
+    <div id="theSheet">
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="hw2.js"></script>
+
 
 </body>
 
