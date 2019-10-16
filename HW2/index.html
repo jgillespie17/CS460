@@ -20,11 +20,11 @@
 
                     <div class="form-group">
                         <label for="Class">Select Class</label>
-                        <input type="text" class="form-control" id="Class" placeholder="ex. Wizard">
+                        <input type="text" class="form-control" id="classData" placeholder="ex. Wizard">
                     </div>
                     <div class="form-group">
                         <label for="Race">Select Race</label>
-                        <input type="text" class="form-control" id="Race" placeholder="ex. Human">
+                        <input type="text" class="form-control" id="raceData" placeholder="ex. Human">
                     </div>
 
 
@@ -32,7 +32,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="Background">Background</label>
-                        <input type="text" class="form-control" id="Background" placeholder="ex. Soldier, Sage">
+                        <input type="text" class="form-control" id="backgroundData" placeholder="ex. Soldier, Sage">
                     </div>
                     <div class="form-group">
                         <label for="Level">Starting Level</label>
@@ -42,20 +42,45 @@
             </div>
             <div class="row">
                 <button type="button" id="generate" class="btn btn-primary" onclick="makeSheet();">
-
+                    Generate Sheet
                </button>
             </div>
         </form>
     </div>
+    <div class="bar"> </div>
     <div class="container">
-        <form>
-            <div id="theSheet">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+                <form>
+                    <div id="theSheet">
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="col">
 
             </div>
-        </form>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <h6>Generates additional stat sheets per button press</h1>
+                    <div id="myList">
+
+                    </div>
+
+            </div>
+            <div class="col"></div>
+
+        </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="hw2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
 
 
 </body>
