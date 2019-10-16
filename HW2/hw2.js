@@ -1,7 +1,6 @@
 let stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charism", "Gold", "Hitpoints"];
 
 function makeSheet() {
-    formClear();
     $("#theSheet").empty();
     //body.empty();
     $("#myList").empty();
