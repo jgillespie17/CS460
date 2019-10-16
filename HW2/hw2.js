@@ -1,33 +1,37 @@
+let stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charism", "Gold", "Hitpoints"];
+
 function makeSheet() {
-    var tab1 = $("<table>");
-    var capt = $("<caption>").html("Character stats");
-    capt.appendTo(tab1);
-    var thead = $("<thead>\
-                    <tr>\
-                        <th>Strength</th>\
-                        <th>Dexterity</th>\
-                        <th>Constitution</th>\
-                        <th>Intelligence</th>\
-                        <th>Wisdom</th>\
-                        <th>Charisma</th>\
-                        <th>Gold</th>\
-                        <th>Hitpoints</th>\
-                    </tr>\
-                </thead>");
-    thead.appendTo(tab1);
-    var tbody = $("<tbody>");
-    var trow = $("<tr>");
+    //creates stats
     var Str = Math.round(Math.random() * 10);
     var Dex = Math.round(Math.random() * 10);
     var Con = Math.round(Math.random() * 10);
     var Int = Math.round(Math.random() * 10);
     var Wis = Math.round(Math.random() * 10);
     var Cha = Math.round(Math.random() * 10);
-    var lev = document.getElementById("Level");
-    var Gold = lev * 20;
-    var hitpoints = calcHit(lev);
-    console.log(hitpoints);
-    return tab1;
+    var lev = document.getElementById("levelData").value;
+    var lev2 = parseInt(lev, 10)
+    var Gold = lev2 * 20;
+    var hitpoints = calcHit(lev2);
+    let statNum = [Str, Dex, Con, Int, Wis, Cha, Gold, hitpoints];
+
+    //creates table
+    var body = document.body;
+    var tab = document.createElement('table');
+    var tr = tab.insertRow();
+    for (var i = 0; i < 8; i++) {
+        var th = tr.insertCell();
+        th.appendChild(document.createTextNode(stats[i]));
+        th.style.border = '1px solid black';
+    }
+    body.appendChild(tab);
+    tr = tab.insertRow();
+    for (var j = 0; j < 8; j++) {
+        var td = tr.insertCell();
+        td.appendChild(document.createTextNode(statNum[j]));
+        th.style.border = '1x solid black;'
+    }
+    body.appendChild(tab);
+
 }
 
 function calcHit(lev) {

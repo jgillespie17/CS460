@@ -36,18 +36,23 @@
                     </div>
                     <div class="form-group">
                         <label for="Level">Starting Level</label>
-                        <input type="number" class="form-control" id="Level" placeholder="ex. 1-20">
+                        <input type="number" class="form-control" id="levelData" placeholder="ex. 1-20">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <input type="submit" value="generate" id="generate">
+                <button type="button" id="generate" class="btn btn-primary" onclick="makeSheet();">
+
+               </button>
             </div>
         </form>
     </div>
+    <div class="container">
+        <form>
+            <div id="theSheet">
 
-    <div id="theSheet">
-
+            </div>
+        </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="hw2.js"></script>
