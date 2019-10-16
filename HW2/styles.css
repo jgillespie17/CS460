@@ -1,0 +1,29 @@
+th,
+td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid black;
+}
+
+div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+body {
+    border-left: 4em solid white;
+    border-right: 4em solid white;
+}
+
+.bar {
+    width: 100%;
+    height: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
