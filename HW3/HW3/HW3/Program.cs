@@ -17,7 +17,7 @@ namespace HW3
                 throw new ArgumentNullException(nameof(args));
             }
 
-            int C = 72;
+            int C = 200;
             string inputFilename = Path.Combine(Directory.GetCurrentDirectory(), "WarOfTheWorlds.txt");
             Console.WriteLine(inputFilename);
             string outputFilename = Path.Combine(Directory.GetCurrentDirectory(), "output.txt");
@@ -42,12 +42,12 @@ namespace HW3
                 outputFilename = args[2];
                 using (StreamReader reads = new StreamReader(inputFilename))
                 {
-                    string word;
-                    while ((word = reads.ReadLine()) != null)
+                    string book = reads.ReadToEnd();
+                    foreach(string word in book.Split(' '))
                     {
-                        word = reads.ReadLine();
                         words.Push(word);
                     }
+                    reads.Close();
                 }
 
             }
@@ -62,10 +62,11 @@ namespace HW3
                 PrintUsage();
                 Environment.Exit(1);
             }
+
             int spacesRemaining = WrapSimply(words, C, outputFilename);
             Console.WriteLine("Total spaces remaining (Greedy): " + spacesRemaining);
 
-
+        
         }
 
 
@@ -79,12 +80,15 @@ namespace HW3
                 "   outputfile is the new output file base name containing the wrapped text. \n" +
                 "e.g. java Main 72 myfile.txt myfile_wrapped.txt");
         }
-        private static int WrapSimply(LinkedQueue<string> words, int columnLength, String outputFilename)
+        private static int WrapSimply(IQueueInterface<string> words, int columnLength, string outputFilename)
         {
+       
             StreamWriter writerOut = new StreamWriter(outputFilename);
             try
             {
-                writerOut = new StreamWriter(outputFilename);
+                writerOut.Flush();
+                writerOut.Close();
+                StreamWriter streamWriter = writerOut = new StreamWriter(outputFilename);
             }
             catch (FileNotFoundException)
             {
@@ -97,23 +101,24 @@ namespace HW3
             {
                 String str = words.Peek();
                 int len = str.Length;
+                //Console.WriteLine(len);
                 if (col == 1)
                 {
                     
-                    writerOut.WriteLine(str);
+                    writerOut.Write(str);
                     col += len;
                     words.Pop();
                 }
                 else if ((col + len) >= columnLength)
                 {
-                    Console.WriteLine();
-                    spacesRemaining += (columnLength - col) + 1;
+                    writerOut.WriteLine();
+                    spacesRemaining += (columnLength - col + 1);
                     col = 1;
                 }
                 else
                 {
-                    writerOut.WriteLine(" ");
-                    writerOut.WriteLine(str);
+                    writerOut.Write(" ");
+                    writerOut.Write(str);
                     col += (len + 1);
                     words.Pop();
                 }
