@@ -22,7 +22,6 @@ namespace HW3
             int C = 72;
             String inputFilename;
             String outputFilename = "output.txt";
-            //scanner equivalent goes here
 
             if(args.Length != 3)
             {
@@ -35,7 +34,15 @@ namespace HW3
                 C = Interger.parseInt(args[0]);
                 inputFilename = args[1];
                 outputFilename = args[2];
-                //scanner equivalent goes here
+                using (StreamReader reads = new StreamReader(inputFilename))
+                {
+                    string word;
+                    while((word = reads.ReadLine()) != null)
+                    {
+                        word = reads.ReadLine();
+                        words.push(word);
+                    }
+                }
 
             }
             catch(FileNotFoundException e)
@@ -52,13 +59,6 @@ namespace HW3
 
             QueueInterface<String> words = new LinkedQueue<String>();
 
-            while(/*scanner equialent goes here*/)
-            {
-                String word = /*scanner equivalent goes here*/;
-                words.push(word);
-            }
-
-
             int spacesRemaining = wrapSimply(words, C, outputFilename);
             Console.WriteLine("Total spaces remaining (Greedy): " + spacesRemaining);
 
@@ -67,28 +67,29 @@ namespace HW3
 
         private static int wrapSimply(QueueInterface<String> words, int columnLength, String outputFilename)
         {
-            PrintWriter out;
+
+            StreamWriter writerOut;
 
             try
             {
-                outputFilename = new printWriter(ouptutFilename);
+                writerOut = new StreamWriter(ouptutFilename);
             }
             catch( FileNotFoundException e)
             {
                 Console.WriteLine("Cannon create or open " + outputFilename + " for writing. Using standard output instead.");
-                outputFilename = new PrintWriter(Console.WriteLine());
+                writerOut = new StreamWriter(Console.WriteLine());
             }
 
             int col = 1;
             int spacesRemaining = 0;
-            while (!words.isEmpty())
+            while ( !words.isEmpty() )
             {
                 String str = words.peek();
                 int len = str.Length();
 
                 if (col == 1)
                 {
-                    out.print(str);
+                    writerOut.print(str);
                     col += len;
                     words.pop();
                 }
@@ -100,16 +101,16 @@ namespace HW3
                 }
                 else
                 {
-                    out.print(" ");
-                    out.print(str);
+                    writerOut.print(" ");
+                    writerOut.print(str);
                     col += (len + 1);
                     words.pop();
                 }
 
             }
-            out.println();
-            out.flush();
-            out.close();
+            writerOut.WriteLine();
+            writerOut.flush();
+            writerOut.close();
             return spacesRemaining;
         }
     }
