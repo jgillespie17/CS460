@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace HW3
+﻿namespace HW3
 {
-    public class LinkedQueue<T> : QueueInterface<T>
+    public class LinkedQueue<T> : IQueueInterface<T>
     {
         private Node<T> front;
         private Node<T> rear;
@@ -13,14 +11,14 @@ namespace HW3
             rear = null;
         }
 
-        public T push(T element)
+        public T Push(T element)
         {
-            if(element == null)
+            if (element == null)
             {
-                throw new nullPointerException();    
+                throw new System.Exception();
             }
 
-            if (isEmpty())
+            if (IsEmpty())
             {
                 Node<T> tmp = new Node<T>(element, null);
                 rear = front = tmp;
@@ -33,11 +31,11 @@ namespace HW3
             }
             return element;
         }
-        
-        public T pop()
+
+        public T Pop()
         {
-            T tmp = null;
-            if (isEmpty())
+            T tmp;
+            if (IsEmpty())
             {
                 throw new QueueUnderflowException("The queue was empty when pop was invoked.");
             }
@@ -53,21 +51,21 @@ namespace HW3
                 front = front.next;
             }
             return tmp;
-               
+
         }
 
-        public T peek()
+        public T Peek()
         {
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new QueueUnderflowException("The queue was empty when peek was invoked.");
             }
             return front.data;
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {
-            if(front == null && rear == null)
+            if (front == null && rear == null)
             {
                 return true;
             }
@@ -77,8 +75,7 @@ namespace HW3
             }
 
         }
-            
+
 
     }
-
 }

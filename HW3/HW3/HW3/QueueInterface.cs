@@ -1,17 +1,13 @@
-﻿using System;
-
-namespace HW3
+﻿namespace HW3
 {
-
-
-    public interface QueueInterface<T>
+    public interface IQueueInterface<T>
     {
-        T push(T element);
+        T Push(T element);
 
-        T pop();
+        T Pop();
 
-        T peek();
+        T Peek();
 
-        bool isEmpty();
+        bool IsEmpty();
     }
 }

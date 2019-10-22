@@ -1,20 +1,18 @@
 ﻿using System;
 
+
 namespace HW3
 {
-    public class QueueUnderflowException
+    [Serializable]
+    internal class QueueUnderflowException : Exception
     {
         public QueueUnderflowException()
         {
-            base.processorOperator();
         }
-         public QueueUnderflowException(String message)
+
+        public QueueUnderflowException(string message) : base(message)
         {
-            base.processorOperator(message);
         }
-            
 
     }
-
 }
-
