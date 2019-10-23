@@ -12,19 +12,31 @@ namespace HW3
 
         static void Main(string[] args)
         {
-            if (args is null)
-            {
-                throw new ArgumentNullException(nameof(args));
-            }
+    
+            Console.WriteLine("Please enter wrap width: ");
+            string C = Console.ReadLine();
 
-            int C = 200;
-            string inputFilename = Path.Combine(Directory.GetCurrentDirectory(), "WarOfTheWorlds.txt");
-            Console.WriteLine(inputFilename);
-            string outputFilename = Path.Combine(Directory.GetCurrentDirectory(), "output.txt");
-            Console.WriteLine(outputFilename);
-            string C2 = C.ToString();
+            string directory = Directory.GetCurrentDirectory();
+
+            Console.WriteLine("Please enter the input file name: ");
+            Console.WriteLine("Automatically uses current directory of exe for path");
+            string inputFilename = Console.ReadLine();
+            inputFilename = Path.Combine(directory, inputFilename);
+
+            Console.WriteLine("Automatically uses current directory of exe for path");
+            Console.WriteLine("Please enter the output file name: ");
+            string outputFilename = Console.ReadLine();
+            outputFilename = Path.Combine(directory, outputFilename);
+
+            //Console.WriteLine(C);
+
+            //string inputFilename = Path.Combine(Directory.GetCurrentDirectory(), "WarOfTheWorlds.txt");
+            //Console.WriteLine(inputFilename);
+            //string outputFilename = Path.Combine(Directory.GetCurrentDirectory(), "output.txt");
+            //Console.WriteLine(outputFilename);
+            int C2 = int.Parse(C);
             args = new string[3];
-            args[0] = C2;
+            args[0] = C;
             args[1] = inputFilename;
             args[2] = outputFilename;
 
@@ -37,9 +49,6 @@ namespace HW3
             }
             try
             {
-                C = int.Parse(args[0]);
-                inputFilename = args[1];
-                outputFilename = args[2];
                 using (StreamReader reads = new StreamReader(inputFilename))
                 {
                     string book = reads.ReadToEnd();
@@ -54,6 +63,7 @@ namespace HW3
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Could not find the input file.");
+                PrintUsage();
                 Environment.Exit(1);
             }
             catch (Exception)
@@ -63,8 +73,10 @@ namespace HW3
                 Environment.Exit(1);
             }
 
-            int spacesRemaining = WrapSimply(words, C, outputFilename);
+            int spacesRemaining = WrapSimply(words, C2, outputFilename);
             Console.WriteLine("Total spaces remaining (Greedy): " + spacesRemaining);
+            Console.WriteLine("Press enter to exit");
+            Console.ReadLine();
 
         
         }
@@ -73,12 +85,14 @@ namespace HW3
         private static void PrintUsage()
         {
             Console.WriteLine("Usage is :\n" +
-                "\tjava Main C inputfile outputfile\n\n" +
+                "\t C 'enter' inputfile 'enter' outputfile\n\n" +
                 "where:" +
                 "   C is the column number to fit to \n" +
                 "   inputfile is the input text file \n" +
                 "   outputfile is the new output file base name containing the wrapped text. \n" +
-                "e.g. java Main 72 myfile.txt myfile_wrapped.txt");
+                "e.g. 72 \n" +
+                "WarOfTheWorlds.txt \n" +
+                "output.txt");
         }
         private static int WrapSimply(IQueueInterface<string> words, int columnLength, string outputFilename)
         {
