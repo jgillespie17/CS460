@@ -13,7 +13,7 @@ namespace hw4.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult RGBColor()
         {
             ViewBag.Message = "Your application description page.";
 

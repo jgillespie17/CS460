@@ -13,11 +13,14 @@ namespace hw4
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute("", "X{controller}/{action}");
+            routes.MapRoute("", "Home/{controller}/{action}", new { controller = "RGB", action = "Index" });
         }
     }
 }
