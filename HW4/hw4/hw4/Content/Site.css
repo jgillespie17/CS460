@@ -24,11 +24,9 @@ textarea {
 }
 
 .color-box{
-    width: 10px;
-    height: 10px;
+    width: 300px;
+    height: 300px;
     display: inline-block;
-    background-color: #ccc;
     left: 5px;
     right: 5px;
-
 }

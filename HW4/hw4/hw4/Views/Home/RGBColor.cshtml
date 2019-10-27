@@ -3,5 +3,37 @@
     ViewBag.Title = "RGBColor";
 }
 
-<h2>RGBColor</h2>
+<h2>RGB Color</h2>
 
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("RGBColor", "Home", FormMethod.Get))
+        {
+            <div class="form-group">
+                @Html.Label("R", "Red: ")
+                @Html.TextBox("intRed", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+
+                @Html.Label("G", "Green: ")
+                @Html.TextBox("intGreen", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+
+                @Html.Label("B", "Blue: ")
+                @Html.TextBox("intBlue", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+                <input type="submit" value="Display" />
+            </div>
+        }
+
+    </div>
+    <div class="col-md-6">
+
+        <div class="color-box" style="background-color: #@ViewBag.Hex">
+
+        </div>
+        <p>
+            #
+            @ViewBag.Hex
+        </p>
+
+
+
+    </div>
+</div>
