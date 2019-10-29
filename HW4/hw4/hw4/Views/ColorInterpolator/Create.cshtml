@@ -23,6 +23,17 @@
     </div>
 
     <div class="col-md-6">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Color</th>
+            </tr>
+            @*@foreach(var item in (ienumerable<hw4.controllers.colorinterpolatorcontroller.hexlist>)viewbag.itemlist)
+            {
+
+                <tr><td style="background-color:@item.hex"></td></tr>
+                
+            }*@
+        </table>
 
     </div>
 </div>

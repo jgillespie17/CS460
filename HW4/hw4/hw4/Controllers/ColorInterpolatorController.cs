@@ -22,8 +22,10 @@ namespace hw4.Controllers
             Color NewFirstColor = ColorTranslator.FromHtml(FirstColor);
             Color NewSecondColor = ColorTranslator.FromHtml(SecondColor);
             ColorToHSV(NewFirstColor, out double FirstHue, out double FirstSaturation, out double FirstValue);
-            ColorToHSV(NewFirstColor, out double SecondHue, out double SecondSaturation, out double SecondValue);
+            ColorToHSV(NewSecondColor, out double SecondHue, out double SecondSaturation, out double SecondValue);
             int num = NumColor.GetValueOrDefault();
+            IList<HSV> HSVList = new List<HSV>();
+
             double HueInterval = (SecondHue - FirstHue) / num;
             double SaturationInterval = (SecondSaturation - FirstSaturation) / num;
             double ValueInterval = (SecondValue - FirstValue) / num;
@@ -31,9 +33,15 @@ namespace hw4.Controllers
             double HueCurrent = FirstHue;
             double SaturationCurrent = FirstSaturation;
             double ValueCurrent = FirstValue;
-
-            List<string> Colors = new List<string>();
-            
+            for(int i = 0; i < num; i++)
+            {
+                HSVList.Add(new HSV { Hue = HueCurrent, Saturation = SaturationCurrent, Value = ValueCurrent });
+                HueCurrent += HueInterval;
+                SaturationCurrent += SaturationInterval;
+                ValueCurrent += ValueInterval;
+                
+            }
+            Console.WriteLine("SOmething");
             return View();
 
         }
@@ -72,5 +80,17 @@ namespace hw4.Controllers
             else
                 return Color.FromArgb(255, v, p, q);
         }
+        public struct HSV
+        {
+            public double Hue { get; set; }
+            public double Saturation { get; set; }
+            public double Value { get; set; }
+
+        }
+        public struct HexList
+        {
+            public string Hex { get; set; }
+        }
+
     }
 }
