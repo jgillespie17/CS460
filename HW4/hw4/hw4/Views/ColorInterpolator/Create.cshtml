@@ -12,9 +12,9 @@
         {
             <div class="form-group">
                 @Html.Label("FirstColor", "First Color: ")
-                @Html.TextBox("FirstColor", null, new { @class = "form-control", type = "text" })
+                @Html.TextBox("FirstColor", null, new { @class = "form-control", type = "text", required = "required", pattern = "#[0-9a-fA-F]{3}" })
                 @Html.Label("SecondColor", "Second Color: ")
-                @Html.TextBox("SecondCOlor", null, new { @class = "form-control", type = "text" })
+                @Html.TextBox("SecondCOlor", null, new { @class = "form-control", type = "text", required = "required", pattern = "#[0-9a-fA-F]{3}" })
                 @Html.Label("NumColor", "Number of Colors:")
                 @Html.TextBox("NumColor", null, new { @class = "form-control", type = "number", min = "0" })
                 <button type="submit" class="btn btn-primary">GenerateColors</button>
