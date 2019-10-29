@@ -19,30 +19,74 @@ namespace hw4.Controllers
         [HttpPost]
         public ActionResult Create(string FirstColor, string SecondColor, int? NumColor)
         {
-            Color NewFirstColor = ColorTranslator.FromHtml(FirstColor);
-            Color NewSecondColor = ColorTranslator.FromHtml(SecondColor);
-            ColorToHSV(NewFirstColor, out double FirstHue, out double FirstSaturation, out double FirstValue);
-            ColorToHSV(NewSecondColor, out double SecondHue, out double SecondSaturation, out double SecondValue);
-            int num = NumColor.GetValueOrDefault();
-            IList<HSV> HSVList = new List<HSV>();
-
-            double HueInterval = (SecondHue - FirstHue) / num;
-            double SaturationInterval = (SecondSaturation - FirstSaturation) / num;
-            double ValueInterval = (SecondValue - FirstValue) / num;
-
-            double HueCurrent = FirstHue;
-            double SaturationCurrent = FirstSaturation;
-            double ValueCurrent = FirstValue;
-            for(int i = 0; i < num; i++)
+            if (ModelState.IsValid)
             {
-                HSVList.Add(new HSV { Hue = HueCurrent, Saturation = SaturationCurrent, Value = ValueCurrent });
-                HueCurrent += HueInterval;
-                SaturationCurrent += SaturationInterval;
-                ValueCurrent += ValueInterval;
-                
+                Color NewFirstColor = ColorTranslator.FromHtml(FirstColor);
+                Color NewSecondColor = ColorTranslator.FromHtml(SecondColor);
+                ColorToHSV(NewFirstColor, out double FirstHue, out double FirstSaturation, out double FirstValue);
+                ColorToHSV(NewSecondColor, out double SecondHue, out double SecondSaturation, out double SecondValue);
+                int num = NumColor.GetValueOrDefault();
+                num -= 1;
+
+                /*
+                //int RedInterval = (NewSecondColor.R - NewFirstColor.R) / num;
+                //int GreenInterval = (NewSecondColor.G - NewFirstColor.G) / num;
+                //var BlueInterval = (NewSecondColor.B - NewFirstColor.B) / num;
+
+                //int RedCurrent = NewFirstColor.R;
+                //int GreenCurrent = NewFirstColor.G;
+                //int BlueCurrent = NewFirstColor.B;
+                //IList<string> HexList = new List<string>();
+
+                //for (var i = 0; i <= num; i++)
+                //{
+                //    Color color = Color.FromArgb(1, RedCurrent, GreenCurrent, BlueCurrent);
+                //    string HexColor = ColorTranslator.ToHtml(color);
+                //    HexList.Add(HexColor);
+
+                //    RedCurrent += RedInterval;
+                //    GreenCurrent += GreenInterval;
+                //    BlueCurrent += BlueInterval;
+                //}
+                //
+                */
+
+                IList<HSV> HSVList = new List<HSV>();
+
+                double HueInterval = (SecondHue - FirstHue) / num;
+                double SaturationInterval = (SecondSaturation - FirstSaturation) / num;
+                double ValueInterval = (SecondValue - FirstValue) / num;
+
+                double HueCurrent = FirstHue;
+                double SaturationCurrent = FirstSaturation;
+                double ValueCurrent = FirstValue;
+                for (int i = 0; i < num; i++)
+                {
+                    HSVList.Add(new HSV { Hue = HueCurrent, Saturation = SaturationCurrent, Value = ValueCurrent });
+                    HueCurrent += HueInterval;
+                    SaturationCurrent += SaturationInterval;
+                    ValueCurrent += ValueInterval;
+
+                }
+                IList<string> HexList = new List<string>();
+                for(int j = 0; j < num; j++)
+                {
+                    Color ConvColor = ColorFromHSV(HSVList[j].Hue, HSVList[j].Saturation, HSVList[j].Value);
+                    string HexColor = ColorTranslator.ToHtml(ConvColor);
+                    HexList.Add(HexColor);
+
+                }
+                HexList.Add(SecondColor);
+
+                ViewBag.HexList = HexList;
+                ViewBag.Success = true;
+                Console.WriteLine("SOmething");
+                return View();
             }
-            Console.WriteLine("SOmething");
-            return View();
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
         }
 
@@ -86,10 +130,6 @@ namespace hw4.Controllers
             public double Saturation { get; set; }
             public double Value { get; set; }
 
-        }
-        public struct HexList
-        {
-            public string Hex { get; set; }
         }
 
     }

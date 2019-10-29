@@ -8,32 +8,41 @@
 
 <div class="row">
     <div class="col-md-6">
-        @using(Html.BeginForm("Create", "ColorInterpolator", FormMethod.Post))
+        @using (Html.BeginForm("Create", "ColorInterpolator", FormMethod.Post))
         {
             <div class="form-group">
                 @Html.Label("FirstColor", "First Color: ")
-                @Html.TextBox("FirstColor", null, new { @class="form-control",type="text" })
+                @Html.TextBox("FirstColor", null, new { @class = "form-control", type = "text" })
                 @Html.Label("SecondColor", "Second Color: ")
-                @Html.TextBox("SecondCOlor", null, new { @class="form-control", type="text"})
+                @Html.TextBox("SecondCOlor", null, new { @class = "form-control", type = "text" })
                 @Html.Label("NumColor", "Number of Colors:")
-                @Html.TextBox("NumColor", null, new { @class="form-control", type="number", min="0"})
+                @Html.TextBox("NumColor", null, new { @class = "form-control", type = "number", min = "0" })
                 <button type="submit" class="btn btn-primary">GenerateColors</button>
             </div>
         }
     </div>
 
     <div class="col-md-6">
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>Color</th>
-            </tr>
-            @*@foreach(var item in (ienumerable<hw4.controllers.colorinterpolatorcontroller.hexlist>)viewbag.itemlist)
-            {
+        @if (ViewBag.Success == true)
+        {
 
-                <tr><td style="background-color:@item.hex"></td></tr>
-                
-            }*@
-        </table>
+
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>HTML</th>
+                    <th>Color</th>
+                </tr>
+                @foreach (var item in (IEnumerable<System.String>)ViewBag.HexList)
+                {
+
+                    <tr>
+                        <td>@item</td>
+                        <td style="background-color:@item"></td>
+                    </tr>
+
+                }
+            </table>
+        }
 
     </div>
 </div>
