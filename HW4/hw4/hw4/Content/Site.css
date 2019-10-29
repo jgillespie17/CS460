@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.color-box{
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    left: 5px;
+    right: 5px;
+}
