@@ -3,5 +3,67 @@
     ViewBag.Title = "Tracker";
 }
 
-<h2>Tracker</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <h1>
+                    Homework Tracker
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Create New Homework
+            </div>
+            <div class="col-md-4">
+              
+            </div>
 
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("DueDate", "Due Date:")
+                @Html.TextBox("DueDate", null, new { @class = "form-control", type = "date", required = "required"})
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Department", "Department ")
+                @Html.TextBox("Department", null, new { @class = "form-control", type = "text", required = "required" })
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("DueTime", "Due Time ")
+                @Html.TextBox("DueTime", null, new { @class = "form-control", type = "date", required = "required" })
+            </div>
+            <div class="col-md-6">
+                @Html.Label("CourseNum", "Course#")
+                @Html.TextBox("CourseNum", null, new { @class = "form-control", type = "number", required = "required"})
+            </div>"
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.Label("Title", "Homework Title")
+                @Html.TextBox("Title", null, new { @class = "form-control", type = "text", required = "required"})
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.Label("Notes", "Notes")
+                @Html.TextArea("Title", null, new { @class = "form-control", type = "text"})
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
