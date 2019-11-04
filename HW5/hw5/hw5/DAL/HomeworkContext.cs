@@ -9,11 +9,11 @@ namespace hw5.DAL
 {
     public class HomeworkContext : DbContext
     {
-        public HomeworkContext() : base("name=Homework")
+        public HomeworkContext() : base("name=HomeworkDB")
         {
-
+            Database.SetInitializer<HomeworkContext>(null);
         }
 
-        public virtual DbSet<Homework>Homework { get; set; }
+        public virtual DbSet<Homework> Homeworks { get; set; }
     }
 }

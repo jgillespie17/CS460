@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Homework]
+﻿CREATE TABLE [dbo].[Homeworks]
 (
 	[ID] INT IDENTITY(1,1) NOT NULL,
 	[Urgency] INT NOT NULL,
@@ -8,10 +8,10 @@
 	[Course] INT NOT NULL,
 	[Title] NVARCHAR(64) NOT NULL,
 	[Notes] NVARCHAR(512) NOT NULL,
-	CONSTRAINT [Pk_dbo.Homework] Primary key clustered ([ID] ASC)
+	CONSTRAINT [Pk_dbo.Homeworks] Primary key clustered ([ID] ASC)
 	);
 
-INSERT INTO [dbo].[Homework] (Urgency, DD, DT, DEPARTMENT, COURSE, TITLE, NOTES) Values
+INSERT INTO [dbo].[Homeworks] (Urgency, DD, DT, DEPARTMENT, COURSE, TITLE, NOTES) Values
 	('1', '19450812', '19450912', 'HIS', '420', 'MANHATTAN', 'CLASSIFIED'),
 	('2', '19450812', '19450814', 'HIS', '420', 'OVERLORD', 'CLASSIFIED'),
 	('3', '19450812', '19450814', 'HIS', '420', 'OLYMPIC', 'CLASSIFIED'),
