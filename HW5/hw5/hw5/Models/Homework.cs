@@ -20,7 +20,7 @@ namespace hw5.Models
         public DateTime DueDate { get; set; }
 
         [Required]
-        public DateTime DueTime { get; set; }
+        public TimeSpan DueTime { get; set; }
 
         [Required]
         [StringLength(32)]

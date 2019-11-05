@@ -64,6 +64,20 @@ namespace hw5.Controllers
             return View(homework);
         }
 
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Tracker([Bind(Include = "ID,Urgency,DueDate,DueTIme,Department,Course,Title,Notes")] Homework homework)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Homework.Add(homework);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(homework);
+        }
+
         // GET: Homeworks/Edit/5
         public ActionResult Edit(int? id)
         {
