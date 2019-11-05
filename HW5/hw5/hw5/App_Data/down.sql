@@ -1,1 +1,1 @@
-﻿DROP TABLE [dbo].[Homeworks];
+﻿DROP TABLE [dbo].[Homework];

@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using hw5.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using hw5.Models;
 
 namespace hw5.DAL
 {
     public class HomeworkContext : DbContext
     {
-        public HomeworkContext() : base("name=HomeworkDB")
+        public HomeworkContext() : base("name=OurHomeworkDB")
         {
             Database.SetInitializer<HomeworkContext>(null);
         }
 
-        public virtual DbSet<Homework> Homeworks { get; set; }
+        public virtual DbSet<Homework> Homework { get; set; }
     }
 }

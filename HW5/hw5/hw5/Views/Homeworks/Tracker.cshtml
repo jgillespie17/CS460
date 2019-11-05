@@ -1,0 +1,68 @@
+﻿@model hw5.Models.Homework
+
+@{
+    ViewBag.Title = "Tracker";
+}
+
+    <div class="form-horizontal">
+ 
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h1>Homework Tracker</h1>
+                    <h4>Create New Homework</h4>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("Title", "Homework Title")
+                        @Html.TextBox("Title", null, new { @class = "form-control", type = "text", required = "required" })
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("Urgency", "Urgency: ")
+                        @Html.TextBox("Urgency", null, new { @class = "form-control", type = "num", required = "required", pattern = "[1-5]{1}" })
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("DueDate", "Due Date:")
+                        @Html.TextBox("DueDate", null, new { @class = "form-control", type = "date", required = "required" })
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("Department", "Department ")
+                        @Html.TextBox("Department", null, new { @class = "form-control", type = "text", required = "required" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("DueTime", "Due Time ")
+                        @Html.TextBox("DueTime", null, new { @class = "form-control", type = "time", required = "required" })
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        @Html.Label("CourseNum", "Course#")
+                        @Html.TextBox("CourseNum", null, new { @class = "form-control", type = "number", required = "required" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-10">
+                        @Html.Label("Notes", "Notes")
+                        @Html.TextArea("Title", null, new { @class = "form-control", type = "text", style = "min-width: 100%" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-4">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+    </div>

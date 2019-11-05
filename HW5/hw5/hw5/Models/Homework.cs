@@ -9,29 +9,34 @@ namespace hw5.Models
 {
     public class Homework
     {
+
         [Key]
         public int ID { get; set; }
 
-        [Required, DisplayName("Urgency")]
+        [Required]
         public int Urgency { get; set; }
 
-        [Required, DisplayName("Due Date")]
+        [Required]
         public DateTime DueDate { get; set; }
 
-        [Required, DisplayName("Due Time")]
+        [Required]
         public DateTime DueTime { get; set; }
 
-        [Required, DisplayName("Department")]
-        [StringLength(3)]
+        [Required]
+        [StringLength(32)]
         public string Department { get; set; }
-        
-        [Required, DisplayName("Course #")]
-        public int CourseNum { get; set; }
 
-        [Required, DisplayName("Title")]
+        [Required]
+        public int Course { get; set; }
+
+        [Required]
         [StringLength(64)]
         public string Title { get; set; }
 
+        [Required]
+        [StringLength(512)]
         public string Notes { get; set; }
+
+
     }
 }
