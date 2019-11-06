@@ -20,9 +20,6 @@ namespace hw5.Models
         public DateTime DueDate { get; set; }
 
         [Required]
-        public TimeSpan DueTime { get; set; }
-
-        [Required]
         [StringLength(32)]
         public string Department { get; set; }
 
@@ -33,7 +30,6 @@ namespace hw5.Models
         [StringLength(64)]
         public string Title { get; set; }
 
-        [Required]
         [StringLength(512)]
         public string Notes { get; set; }
 

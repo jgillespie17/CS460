@@ -18,7 +18,9 @@ namespace hw5.Controllers
         // GET: Homeworks
         public ActionResult Index()
         {
-            return View(db.Homework.ToList());
+            IList<Homework> HomeworkList = db.Homework.ToList();
+            var HomeworkListOrder = HomeworkList.OrderByDescending(db => db.DueDate);
+            return View(HomeworkListOrder);
         }
 
         // GET: Homeworks/Details/5
