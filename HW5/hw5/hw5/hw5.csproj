@@ -128,7 +128,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\Class1.cs" />
+    <Compile Include="Controllers\HomeworksController.cs" />
+    <Compile Include="DAL\HomeworkContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,9 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\down.sql" />
     <Content Include="App_Data\up.sql" />
@@ -175,7 +176,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Tracker.cshtml" />
+    <Content Include="Views\Homeworks\Tracker.cshtml" />
+    <Content Include="Views\Homeworks\Create.cshtml" />
+    <Content Include="Views\Homeworks\Delete.cshtml" />
+    <Content Include="Views\Homeworks\Details.cshtml" />
+    <Content Include="Views\Homeworks\Edit.cshtml" />
+    <Content Include="Views\Homeworks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

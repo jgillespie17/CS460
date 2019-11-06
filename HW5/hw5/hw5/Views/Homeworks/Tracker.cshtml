@@ -1,0 +1,83 @@
+﻿@model hw5.Models.Homework
+
+@{
+    ViewBag.Title = "Tracker";
+}
+
+@using (Html.BeginForm())
+{
+
+    //@Html.AntiForgeryToken()
+    <div class="form-horizontal">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <h1>Homework Tracker</h1>
+                    <h4>Create New Homework</h4>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @*@Html.Label("Title", "Homework Title")*@
+                        @*@Html.TextBox("Title", null, new { @class = "form-control", type = "text", required = "required" })*@
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", type = "text", required = "required" } })
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @*@Html.Label("DueDate", "Due Date:")
+                        @Html.TextBox("DueDate", null, new { @class = "form-control", type = "datetime-local", required = "required" })*@
+                        @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label"})
+                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local", required = "required" } })
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        @*@Html.Label("Urgency", "Urgency: (1-5) ")
+        @Html.TextBox("Urgency", null, new { @class = "form-control", type = "number", required = "required", pattern = "[1-5]{1}" })*@
+                        @Html.LabelFor(model => model.Urgency, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Urgency, new { htmlAttributes = new { @class = "form-control", type = "text", required = "required", pattern = "[1-5]{1}" } })
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @*@Html.Label("Department", "Department ")
+                        @Html.TextBox("Department", null, new { @class = "form-control", type = "text", required = "required" })*@
+                        @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control", type = "text", required = "required" } })
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        @*@Html.Label("Course", "Course#")
+                        @Html.TextBox("Course", null, new { @class = "form-control", type = "number", required = "required" })*@
+                        @Html.LabelFor(model => model.Course, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Course, new { htmlAttributes = new { @class = "form-control", type = "number", required = "required" } })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-10">
+                        @*@Html.Label("Notes", "Notes")
+                        @Html.TextArea("Notes", null, new { @class = "form-control", type = "text", style = "min-width: 100%" })*@
+                        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", type = "text", style = "min-width: 100%" } })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+            
+    </div>
+
+}

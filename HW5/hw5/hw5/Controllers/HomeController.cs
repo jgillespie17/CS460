@@ -13,9 +13,6 @@ namespace hw5.Controllers
             return View();
         }
 
-        public ActionResult Tracker()
-        {
-            return View();
-        }
+
     }
 }
