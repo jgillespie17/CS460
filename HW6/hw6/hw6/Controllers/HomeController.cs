@@ -17,17 +17,29 @@ namespace hw6.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Index(string name)
         {
-            //IList<StockItem> items = new List<StockItem>();
-            var matchingitems = db.StockItems.Where(s => s.Contains(name));
-            StockItem item = db.StockItems.Find(name);           
-            if(item == null)
+                 
+            if(name == null)
             {
                 return HttpNotFound();
-
             }
-            return View(item);
+            IEnumerable<StockItem> items = db.StockItems.Where(i => i.StockItemName.Contains(name));
+            List<string> ItemName = new List<string>();
+            //IList<string> ItemName = new List<string>();
+            foreach (var item in items)
+            {
+                ItemName.Add(item.StockItemName);
+            }
+            ViewBag.Success = true;
+            return View(ItemName);
         }
+
+        //public struct NameID
+        //{
+        //    public int id { get; set; }
+        //    public string name { get; set; }
+        //}
     }
 }
