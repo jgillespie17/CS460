@@ -20,20 +20,21 @@ namespace hw6.Controllers
         [HttpPost]
         public ActionResult Index(string name)
         {
-                 
-            if(name == null)
-            {
-                return HttpNotFound();
-            }
-            IEnumerable<StockItem> items = db.StockItems.Where(i => i.StockItemName.Contains(name));
-            List<string> ItemName = new List<string>();
-            //IList<string> ItemName = new List<string>();
-            foreach (var item in items)
-            {
-                ItemName.Add(item.StockItemName);
-            }
             ViewBag.Success = true;
-            return View(ItemName);
+            return View(db.StockItems.Where(i => i.StockItemName.Contains(name) || name == null).ToList());
+            //if(name == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //IEnumerable<StockItem> items = db.StockItems.Where(i => i.StockItemName.Contains(name));
+            //List<string> ItemName = new List<string>();
+            ////IList<string> ItemName = new List<string>();
+            //foreach (var item in items)
+            //{
+            //    ItemName.Add(item.StockItemName);
+            //}
+            //ViewBag.Success = true;
+            //return View(ItemName);
         }
 
         //public struct NameID
