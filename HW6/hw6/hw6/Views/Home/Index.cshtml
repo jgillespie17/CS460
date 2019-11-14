@@ -1,4 +1,4 @@
-﻿@model IEnumerable<hw6.Models.StockItem>
+﻿@model hw6.Models.StockItem
 
 @{
     ViewBag.Title = "Wide World Importers";
@@ -11,7 +11,8 @@
     {
         <div class="row">
             <div class="col-lg-12">
-                @Html.TextBox("item", null, new { @class = "form-control", type = "text", required = "required", placeholder = "Search by stock item name", style="width:100%" })
+                @Html.TextBoxFor(model => model.StockItemName, new { @class="form-control", type = "text", required = "required", placeholder = "Search by stock item name", style="width:100%" })
+                @*@Html.TextBox("item", null, new { @class = "form-control", type = "text", required = "required", placeholder = "Search by stock item name", style="width:100%" })*@
             </div>
         </div>
     }
