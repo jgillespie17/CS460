@@ -168,6 +168,7 @@
     <Compile Include="Models\TransactionType.cs" />
     <Compile Include="Models\VehicleTemperature.cs" />
     <Compile Include="DAL\WWIContext.cs" />
+    <Compile Include="Models\ViewModel\StockItemDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
@@ -218,11 +219,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\StockItem\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\ViewModel\" />
-    <Folder Include="Views\StockItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using hw6.DAL;
 using hw6.Models;
+using hw6.Models.ViewModel;
 
 namespace hw6.Controllers
 {
@@ -29,8 +30,8 @@ namespace hw6.Controllers
             {
                 return HttpNotFound();
             }
-
-            return View(stockItem);
+            StockItemDetailsViewModel viewModel = new StockItemDetailsViewModel(stockItem);
+            return View(viewModel);
         }
     }
 }
