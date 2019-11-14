@@ -33,7 +33,8 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.StockItemName</td>
+                            <td>@Html.ActionLink(item.StockItemName, "details", "StockItem", new { id = item.StockItemID }, null )</td>
+                            @*<td>@Html.ActionLink(@item.StockItemName, "Details", "StockItem", new { id = item.StockItemID }) </td>*@
                         </tr>
                     }
                 </tbody>

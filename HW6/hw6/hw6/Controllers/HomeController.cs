@@ -20,6 +20,7 @@ namespace hw6.Controllers
         [HttpPost]
         public ActionResult Index(string name)
         {
+            
             ViewBag.Success = true;
             return View(db.StockItems.Where(i => i.StockItemName.Contains(name) || name == null).ToList());
             //if(name == null)
