@@ -28,14 +28,15 @@
         }
         else
         {
-            <table class="table-striped">
+            <table class="table table-striped">
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@Html.ActionLink(item.StockItemName, "details", "StockItem", new { id = item.StockItemID }, null )</td>
+                            <td>@Html.ActionLink(item.StockItemName, "details", "StockItem", new { id = item.StockItemID }, new { @class = "btn", style="color:Black" })</td>
                             @*<td>@Html.ActionLink(@item.StockItemName, "Details", "StockItem", new { id = item.StockItemID }) </td>*@
                         </tr>
+                        
                     }
                 </tbody>
             </table>

@@ -6,93 +6,202 @@
 
 <h2>Details</h2>
 
-<div class="row">
-    <div class="col-lg-6">
-        <h4>Stock Item</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemName)
-            </dt>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Stock Item</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemName)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemName)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemName)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemSize)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemSize)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemSize)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemSize)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemPrice)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemPrice)
+                </dt>
 
-            <dd>
-                <ins>$</ins>
-                @Html.DisplayFor(model => model.StockItemPrice)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemPrice)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemWeight)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemWeight)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemWeight)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemWeight)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemLeadTime)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemLeadTime)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemLeadTime)
-                <ins> days</ins>
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemLeadTime)
+                    <ins> days</ins>
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemDate)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemDate)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemDate)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemDate)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemOrigin)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemOrigin)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemOrigin)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemOrigin)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StockItemTags)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StockItemTags)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StockItemTags)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StockItemTags)
+                </dd>
 
-        </dl>
-    </div>
-    <div class="col-lg-6">
-        <dl class="dl-horizontal">
-            <dd>
-                @if(Model.StockItemPhoto == null)
-                {
-                <div class="color-box" style="background-color: dimgrey">
-                    <p>No photo avaliable</p>
-                </div>
-                }
-                @Html.DisplayFor(model => model.StockItemPhoto)
-            </dd>
-        </dl>
+            </dl>
+        </div>
+        <div class="col-lg-6">
+            <dl class="dl-horizontal">
+                <dd>
+                    @if (Model.StockItemPhoto == null)
+                    {
+                        <div class="color-box" style="background-color: dimgrey">
+                            <p>No photo avaliable</p>
+                        </div>
+                    }
+                    @Html.DisplayFor(model => model.StockItemPhoto)
+                </dd>
+            </dl>
 
+        </div>
     </div>
 </div>
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Supplier Profile</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SupplierName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SupplierName)
+                </dd>
 
+                <dt>
+                    @Html.DisplayNameFor(model => model.SupplierPhone)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SupplierPhone)
+                </dd>
 
+                <dt>
+                    @Html.DisplayNameFor(model => model.SupplierFax)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SupplierFax)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SupplierWebsite)
+                </dt>
+                <dd>
+                    <a href="@Html.DisplayFor(model => model.SupplierWebsite)"> @Html.DisplayFor(model => model.SupplierWebsite)</a>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SupplierContact)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SupplierContact)
+                </dd>
+            </dl>
+            <hr />
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Sales History Summary</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesOrderNum)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SalesOrderNum)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesGrossSales)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SalesGrossSales)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SalesGrossProfit)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SalesGrossProfit)
+                </dd>
+            </dl>
+            <hr />
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Top Customers</h4>
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                       Customer Name
+                    </th>
+                    <th>
+                        Orders
+                    </th>
+                </tr>
+                @foreach(var item in Model.Top10List)
+                {
+                    <tr>
+                        <td>
+                            @item.name
+                        </td>
+                        <td>
+                            @item.quantity
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+        <hr />
+    </div>
+</div>
