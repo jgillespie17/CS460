@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using hw7.Models;
 using hw7.Models.ViewModels;
+using System.Windows.Documents;
 
 namespace hw7.Controllers
 {
@@ -37,18 +38,23 @@ namespace hw7.Controllers
             string RepoUri = "https://api.github.com/user/repos";
             string jsonArrayString = SendRequest(RepoUri, apiKey, username);
             JArray jsonArray = JArray.Parse(jsonArrayString);
-            JObject RepoObj = JObject.Parse(jsonArray[0].ToString());
-
-            RepoInfo repoInfo = new RepoInfo
+            List<RepoInfo> repoInfos = new List<RepoInfo>();
+            for (int i = 0; i < jsonArray.Count; i++)
             {
-                RepoName = (string)RepoObj.SelectToken("name"),
-                Owner = (string)RepoObj.SelectToken("owner.login"),
-                RepoHtmlUrl = (string)RepoObj.SelectToken("html_url"),
-                OwnerAvatarURL = (string)RepoObj.SelectToken("owner.avatar_url"),
-                LastUpdated = (DateTime)RepoObj.SelectToken("updated_at")
-
-            };
-            UserRepoViewModel viewModel = new UserRepoViewModel(userinfo, repoInfo);
+                JObject RepoObj = JObject.Parse(jsonArray[i].ToString());
+                RepoInfo repoInfo = new RepoInfo
+                {
+                    RepoName = (string)RepoObj.SelectToken("name"),
+                    Owner = (string)RepoObj.SelectToken("owner.login"),
+                    RepoHtmlUrl = (string)RepoObj.SelectToken("html_url"),
+                    OwnerAvatarURL = (string)RepoObj.SelectToken("owner.avatar_url"),
+                    LastUpdated = (DateTime)RepoObj.SelectToken("updated_at"),
+                };
+                repoInfo.RepoLastUpdated = (DateTime.Now - repoInfo.LastUpdated).Days;
+                repoInfos.Add(repoInfo);
+            }
+            repoInfos.Sort((x, y) => x.RepoLastUpdated.CompareTo(y.RepoLastUpdated));
+            UserRepoViewModel viewModel = new UserRepoViewModel(userinfo, repoInfos);
             
             return View(viewModel);
         }

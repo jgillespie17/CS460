@@ -28,19 +28,24 @@
 </div>
 
 <div class="row">
-    <div id="box" class="col-md-4">
+    @foreach (var item in Model.RepoInfos)
+    {
+        <div id="box" class="col-md-3">
 
             <div class="col-md-8">
-                <h4>
-                    <a href="@Html.DisplayFor(model => model.RepoHtmlUrl)">@Html.DisplayFor(model => model.RepoHtmlUrl)</a>
+                <p id="header">
+                    <a href="@Html.DisplayFor(model => item.RepoName)" style="color: orange">@Html.DisplayFor(model => item.RepoHtmlUrl)</a>
 
-                </h4>
-                <p>@Html.DisplayFor(model => model.RepoOwner)</p>
-                <p>@Html.DisplayNameFor(model => model.RepoLastUpdated) @Html.DisplayFor(model => model.RepoLastUpdated) Days ago</p>
-                
+                </p>
+                <p>@Html.DisplayFor(model => item.Owner)</p>
+                <p>@Html.DisplayNameFor(model => item.RepoLastUpdated) @Html.DisplayFor(model => item.RepoLastUpdated) Days ago</p>
+
             </div>
             <div class="col-md-4">
-                <img id="repo" src="@Html.DisplayFor(model => model.RepoOwnerAvatarURL)" alt="Owner Avatar" />
+                <img id="repo" src="@Html.DisplayFor(model => item.OwnerAvatarURL)" alt="Owner Avatar" />
             </div>
-    </div>
+        </div>
+
+    }
+
 </div>

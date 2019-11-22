@@ -26,7 +26,6 @@ textarea {
 img#repo {
     display: block;
     margin-left: auto;
-    margin-right: auto;
     margin-top: 50%;
     margin-bottom: 50%;
     width: 50%;
@@ -34,6 +33,15 @@ img#repo {
 
 div#box{
     background-color: #ff6a00;
+    width : 300px;
+    height: 160px;
     color: white;
-    
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+p#header{
+    font-size: 16px;
 }

@@ -8,7 +8,7 @@ namespace hw7.Models.ViewModels
 {
     public class UserRepoViewModel
     {
-        public UserRepoViewModel(UserInfo userInfo, RepoInfo repoInfo)
+        public UserRepoViewModel(UserInfo userInfo, List<RepoInfo> repoInfo)
         {
             Username = userInfo.Username;
             UserAvatarURL = userInfo.AvatarURL;
@@ -17,12 +17,7 @@ namespace hw7.Models.ViewModels
             UserCompany = userInfo.Company;
             UserLocation = userInfo.Location;
             UserEmail = userInfo.Email;
-
-            RepoName = repoInfo.RepoName;
-            RepoOwner = repoInfo.Owner;
-            RepoHtmlUrl = repoInfo.RepoHtmlUrl;
-            RepoOwnerAvatarURL = repoInfo.OwnerAvatarURL;
-            RepoLastUpdated = (DateTime.Now - repoInfo.LastUpdated).Days;
+            RepoInfos = repoInfo;
         }
         //Userinfo
         public string Username { get; set; }
@@ -33,13 +28,18 @@ namespace hw7.Models.ViewModels
         public string UserLocation { get; set; }
         public string UserEmail { get; set; }
 
-        //RepoInfo
-        public string RepoName { get; set; }
-        public string RepoOwner { get; set; }
-        public string RepoHtmlUrl { get; set; }
-        public string RepoOwnerAvatarURL { get; set; }
 
-        [Display(Name = "Last Updated: ") ]
-        public int RepoLastUpdated { get; set; }
+        //RepoInfo
+        public List<RepoInfo> RepoInfos { get; set;}
+
+
+
+        //public string RepoName { get; set; }
+        //public string RepoOwner { get; set; }
+        //public string RepoHtmlUrl { get; set; }
+        //public string RepoOwnerAvatarURL { get; set; }
+
+        //[Display(Name = "Last Updated: ") ]
+        //public int RepoLastUpdated { get; set; }
     }
 }
