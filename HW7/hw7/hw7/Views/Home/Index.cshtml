@@ -1,0 +1,25 @@
+﻿@model hw7.Controllers.HomeController.UserInfo
+@{
+    ViewBag.Title = "GitHub Viewer";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="@Html.DisplayFor(model => model.AvatarURL)" alt="User Avatar"/>
+        </div>
+        <div class="col-lg-8">
+            <h1>@Html.DisplayFor(model => model.Name)</h1>
+            <p>@Html.DisplayFor(model => model.Username)</p>
+            <p>@Html.DisplayFor(model => model.Email)</p>
+            <p>@Html.DisplayFor(model => model.Company)</p>
+            <p>@Html.DisplayFor(model => model.Location)</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+    </div>
+</div>
