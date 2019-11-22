@@ -1,4 +1,4 @@
-﻿@model hw7.Controllers.HomeController.UserInfo
+﻿@model hw7.Models.ViewModels.UserRepoViewModel
 @{
     ViewBag.Title = "GitHub Viewer";
 }
@@ -6,20 +6,41 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-lg-4">
-            <img src="@Html.DisplayFor(model => model.AvatarURL)" alt="User Avatar"/>
+            <img src="@Html.DisplayFor(model => model.UserAvatarURL)" alt="User Avatar"/>
         </div>
         <div class="col-lg-8">
-            <h1>@Html.DisplayFor(model => model.Name)</h1>
+            <h1>
+                <a style="" href="@Html.DisplayFor(model => model.UserHtmlUrl)">@Html.DisplayFor(model => model.PersonName)</a>
+            </h1>
             <p>@Html.DisplayFor(model => model.Username)</p>
-            <p>@Html.DisplayFor(model => model.Email)</p>
-            <p>@Html.DisplayFor(model => model.Company)</p>
-            <p>@Html.DisplayFor(model => model.Location)</p>
+            <p>@Html.DisplayFor(model => model.UserEmail)</p>
+            <p>@Html.DisplayFor(model => model.UserCompany)</p>
+            <p>@Html.DisplayFor(model => model.UserLocation)</p>
         </div>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Repositories</h2>
+    </div>
+
+</div>
+
+<div class="row">
+    <div id="box" class="col-md-4">
+
+            <div class="col-md-8">
+                <h4>
+                    <a href="@Html.DisplayFor(model => model.RepoHtmlUrl)">@Html.DisplayFor(model => model.RepoHtmlUrl)</a>
+
+                </h4>
+                <p>@Html.DisplayFor(model => model.RepoOwner)</p>
+                <p>@Html.DisplayNameFor(model => model.RepoLastUpdated) @Html.DisplayFor(model => model.RepoLastUpdated) Days ago</p>
+                
+            </div>
+            <div class="col-md-4">
+                <img id="repo" src="@Html.DisplayFor(model => model.RepoOwnerAvatarURL)" alt="Owner Avatar" />
+            </div>
     </div>
 </div>

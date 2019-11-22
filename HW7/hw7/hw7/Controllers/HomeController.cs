@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using hw7.Models;
+using hw7.Models.ViewModels;
 
 namespace hw7.Controllers
 {
@@ -16,24 +16,41 @@ namespace hw7.Controllers
         public ActionResult Index()
         {
             string apiKey = WebConfigurationManager.AppSettings["credentials"];
-            string uri = "https://api.github.com/user";
-            string username = "jgillespie17";
+            string UserUri = "https://api.github.com/user";
 
-            string jsonString = SendRequest(uri, apiKey, username);
-            //JArray jsonArray = JArray.Parse(jsonString);
-            //dynamic obj = JObject.Parse(jsonArray[0].ToString());
-            var obj = JObject.Parse(jsonString);
+            string username = "jgillespie17";
+            string jsonString = SendRequest(UserUri, apiKey, username);
+
+
+            var UserObj = JObject.Parse(jsonString);
             UserInfo userinfo = new UserInfo
             {
-                Username = (string)obj.SelectToken("login"),
-                AvatarURL = (string)obj.SelectToken("avatar_url"),
-                HtmlUrl = (string)obj.SelectToken("html_url"),
-                Name = (string)obj.SelectToken("name"),
-                Company = (string)obj.SelectToken("company"),
-                Location = (string)obj.SelectToken("location"),
-                Email = (string)obj.SelectToken("email")
+                Username = (string)UserObj.SelectToken("login"),
+                AvatarURL = (string)UserObj.SelectToken("avatar_url"),
+                HtmlUrl = (string)UserObj.SelectToken("html_url"),
+                Name = (string)UserObj.SelectToken("name"),
+                Company = (string)UserObj.SelectToken("company"),
+                Location = (string)UserObj.SelectToken("location"),
+                Email = (string)UserObj.SelectToken("email")
             };
-            return View(userinfo);
+
+            string RepoUri = "https://api.github.com/user/repos";
+            string jsonArrayString = SendRequest(RepoUri, apiKey, username);
+            JArray jsonArray = JArray.Parse(jsonArrayString);
+            JObject RepoObj = JObject.Parse(jsonArray[0].ToString());
+
+            RepoInfo repoInfo = new RepoInfo
+            {
+                RepoName = (string)RepoObj.SelectToken("name"),
+                Owner = (string)RepoObj.SelectToken("owner.login"),
+                RepoHtmlUrl = (string)RepoObj.SelectToken("html_url"),
+                OwnerAvatarURL = (string)RepoObj.SelectToken("owner.avatar_url"),
+                LastUpdated = (DateTime)RepoObj.SelectToken("updated_at")
+
+            };
+            UserRepoViewModel viewModel = new UserRepoViewModel(userinfo, repoInfo);
+            
+            return View(viewModel);
         }
 
         private string SendRequest(string uri, string credentials, string username)
@@ -53,24 +70,6 @@ namespace hw7.Controllers
                 stream.Close();
             }
             return jsonString;
-        }
-
-        public class UserInfo
-        {
-            public string Username { get; set; }
-
-            public string AvatarURL { get; set; }
-
-            public string HtmlUrl { get; set; }
-
-            public string  Name { get; set; }
-
-            public string Company { get; set; }
-
-            public string Location { get; set; }
-
-            public string Email { get; set; }
-
         }
     }
 }
