@@ -20,6 +20,5 @@ namespace hw7.Models
         public string Location { get; set; }
 
         public string Email { get; set; }
-
     }
 }

@@ -30,10 +30,7 @@ namespace hw7.Models.ViewModels
 
 
         //RepoInfo
-        public List<RepoInfo> RepoInfos { get; set;}
-
-
-
+        public List<RepoInfo> RepoInfos { get; set; }
         //public string RepoName { get; set; }
         //public string RepoOwner { get; set; }
         //public string RepoHtmlUrl { get; set; }

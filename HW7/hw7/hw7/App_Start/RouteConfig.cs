@@ -14,6 +14,12 @@ namespace hw7
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Commits",
+                url: "http://localhost:64023/api/commits?user={user}&repo={repo}",
+                defaults: new { controller = "Home", action = "ApiMethod" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

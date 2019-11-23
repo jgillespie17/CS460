@@ -21,8 +21,6 @@ namespace hw7.Controllers
 
             string username = "jgillespie17";
             string jsonString = SendRequest(UserUri, apiKey, username);
-
-
             var UserObj = JObject.Parse(jsonString);
             UserInfo userinfo = new UserInfo
             {
@@ -76,6 +74,40 @@ namespace hw7.Controllers
                 stream.Close();
             }
             return jsonString;
+        }
+
+        public ActionResult ApiMethod(string user, string repo)
+        {
+
+            string apiKey = WebConfigurationManager.AppSettings["credentials"];
+            string username = "jgillespie17";
+
+            string CommitUri = "https://api.github.com/repo/" + user + "/" + repo + "/commits";
+            string json = SendRequest(CommitUri, apiKey, username);
+            JArray jsonArray = JArray.Parse(json);
+            List<CommitInfo> commitInfos = new List<CommitInfo>();
+            for(int i = 0; i < jsonArray.Count; i++)
+            {
+                JObject ComObj = JObject.Parse(jsonArray[i].ToString());
+                CommitInfo commitInfo = new CommitInfo
+                {
+                    Sha = (string)ComObj.SelectToken("sha"),
+                    Commiter = (string)ComObj.SelectToken("commit.committer.name"),
+                    CommitMessage = (string)ComObj.SelectToken("commit.message"),
+                    WhenCommited = (DateTime)ComObj.SelectToken("commit.commiter.date"),
+                    CommitHtmlURL = (string)ComObj.SelectToken("url")
+                };
+                commitInfos.Add(commitInfo);
+            }
+
+            commitInfos.Sort((x, y) => x.WhenCommited.CompareTo(y.WhenCommited));
+            string jsonString = JsonConvert.SerializeObject(commitInfos, Formatting.Indented);
+            return new ContentResult
+            {
+                Content = jsonString,
+                ContentType = "application/json",
+                ContentEncoding = System.Text.Encoding.UTF8
+            };
         }
     }
 }
