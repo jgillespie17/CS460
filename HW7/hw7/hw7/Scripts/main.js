@@ -1,6 +1,7 @@
 ﻿function commits(owner, repo) {
     $("#CommitTable").empty();
     var $table = $('#CommitTable');
+    var $header = $('#help');
     var uri = "/api/commits?user=" + owner + "&repo=" + repo;
     $.ajax({
         type: 'GET',
@@ -8,6 +9,7 @@
         url: uri,
         success: function (data) {
             console.log(data);
+            $header.append('<h3>' + repo + '</h3>');
             $table.append('<tr> <th>Sha</th> <th>Timestamp</th> <th>Committer</th> <th>Commit Message</th> </tr>')
             $.each(data, function (i, data) {
                 var str = data.Sha;

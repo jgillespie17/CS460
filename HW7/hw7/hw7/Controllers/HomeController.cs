@@ -114,7 +114,7 @@ namespace hw7.Controllers
                     Committer = (string)ComObj.SelectToken("commit.committer.name"),
                     CommitMessage = (string)ComObj.SelectToken("commit.message"),
                     TimeStamp = (DateTime)ComObj.SelectToken("commit.committer.date"),
-                    CommitHtmlURL = (string)ComObj.SelectToken("url")
+                    CommitHtmlURL = (string)ComObj.SelectToken("html_url")
                 };
                 commitInfos.Add(commitInfo);
             }
