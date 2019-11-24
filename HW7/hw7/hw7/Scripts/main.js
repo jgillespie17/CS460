@@ -1,5 +1,6 @@
 ﻿function commits(owner, repo) {
     $("#CommitTable").empty();
+    $("#help").empty();
     var $table = $('#CommitTable');
     var $header = $('#help');
     var uri = "/api/commits?user=" + owner + "&repo=" + repo;
@@ -8,7 +9,7 @@
         dataType: 'json',
         url: uri,
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             $header.append('<h3>' + repo + '</h3>');
             $table.append('<tr> <th>Sha</th> <th>Timestamp</th> <th>Committer</th> <th>Commit Message</th> </tr>')
             $.each(data, function (i, data) {
@@ -31,8 +32,4 @@ function displayCommits() {
         document.getElementById('CommitTable').append("<th>name")
 
     });
-    //var count = Object.keys(data).length;
-    //for (var j = 0; j < count; j++) {
-    //    $
-    //}
 }
