@@ -43,9 +43,22 @@
             </div>
             <div class="col-md-4">
                 <img id="repo" src="@Html.DisplayFor(model => item.OwnerAvatarURL)" alt="Owner Avatar" />
+                <form>
+                    <input type="button" value="Commits" onclick="commits('@Html.DisplayFor(model => item.Owner)', '@Html.DisplayFor(model => item.RepoName)');">
+                </form>
             </div>
         </div>
 
     }
-
 </div>
+
+<div class="row">
+    <table id="CommitTable" style="width:100%">
+
+    </table>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+    }

@@ -53,7 +53,7 @@ namespace hw7.Controllers
             }
             repoInfos.Sort((x, y) => x.RepoLastUpdated.CompareTo(y.RepoLastUpdated));
             UserRepoViewModel viewModel = new UserRepoViewModel(userinfo, repoInfos);
-            
+
             return View(viewModel);
         }
 
@@ -65,13 +65,29 @@ namespace hw7.Controllers
             request.Accept = "application/json";
 
             string jsonString = null;
-            using (WebResponse response = request.GetResponse())
+            try
             {
-                Stream stream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
-                jsonString = reader.ReadToEnd();
-                reader.Close();
-                stream.Close();
+                using (WebResponse response = request.GetResponse())
+                {
+                    Stream stream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(stream);
+                    jsonString = reader.ReadToEnd();
+                    reader.Close();
+                    stream.Close();
+                }
+            }
+
+            catch (WebException e)
+            {
+                if (e.Status != WebExceptionStatus.Success)
+                {
+                    if (uri.Contains("commits"))
+                    {
+                        jsonString = "[{\"sha\": \"Blank\",\"commit\": { \"committer\": {\"name\": \"Commit\", \"date\": \"1899-11-17T23:35:11Z\"},\"message\": \"No commits in this repository, sorry\",},\"url\": \"https://wou-cs46x-resources.netlify.com/cs460/hw/hw7\"}]";
+
+                    }
+
+                }
             }
             return jsonString;
         }
@@ -82,25 +98,28 @@ namespace hw7.Controllers
             string apiKey = WebConfigurationManager.AppSettings["credentials"];
             string username = "jgillespie17";
 
-            string CommitUri = "https://api.github.com/repo/" + user + "/" + repo + "/commits";
+            string CommitUri = $"https://api.github.com/repos/{user}/{repo}/commits";
+            Console.WriteLine(CommitUri);
+            string test = $"{user}{repo}";
+            Console.WriteLine(test);
             string json = SendRequest(CommitUri, apiKey, username);
             JArray jsonArray = JArray.Parse(json);
             List<CommitInfo> commitInfos = new List<CommitInfo>();
-            for(int i = 0; i < jsonArray.Count; i++)
+            for (int i = 0; i < jsonArray.Count; i++)
             {
                 JObject ComObj = JObject.Parse(jsonArray[i].ToString());
                 CommitInfo commitInfo = new CommitInfo
                 {
                     Sha = (string)ComObj.SelectToken("sha"),
-                    Commiter = (string)ComObj.SelectToken("commit.committer.name"),
+                    Committer = (string)ComObj.SelectToken("commit.committer.name"),
                     CommitMessage = (string)ComObj.SelectToken("commit.message"),
-                    WhenCommited = (DateTime)ComObj.SelectToken("commit.commiter.date"),
+                    TimeStamp = (DateTime)ComObj.SelectToken("commit.committer.date"),
                     CommitHtmlURL = (string)ComObj.SelectToken("url")
                 };
                 commitInfos.Add(commitInfo);
             }
 
-            commitInfos.Sort((x, y) => x.WhenCommited.CompareTo(y.WhenCommited));
+            commitInfos.Sort((x, y) => x.TimeStamp.CompareTo(y.TimeStamp));
             string jsonString = JsonConvert.SerializeObject(commitInfos, Formatting.Indented);
             return new ContentResult
             {

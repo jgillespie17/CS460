@@ -8,8 +8,8 @@ namespace hw7.Models
     public class CommitInfo
     {
         public string Sha { get; set; }
-        public string Commiter { get; set; }
-        public DateTime WhenCommited { get; set; }
+        public string Committer { get; set; }
+        public DateTime TimeStamp { get; set; }
         public string CommitMessage { get; set; }
         public string CommitHtmlURL { get; set; }
     }

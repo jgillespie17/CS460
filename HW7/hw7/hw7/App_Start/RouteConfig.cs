@@ -15,7 +15,7 @@ namespace hw7
 
             routes.MapRoute(
                 name: "Commits",
-                url: "http://localhost:64023/api/commits?user={user}&repo={repo}",
+                url: "api/commits",
                 defaults: new { controller = "Home", action = "ApiMethod" }
                 );
 

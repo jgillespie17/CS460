@@ -32,7 +32,7 @@ img#repo {
 }
 
 div#box{
-    background-color: #ff6a00;
+    background-color: black;
     width : 300px;
     height: 160px;
     color: white;
@@ -44,4 +44,16 @@ div#box{
 
 p#header{
     font-size: 16px;
+}
+table, th, td {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+input{
+    color: black;
+}
+
+div.jumbotron{
+    background-color: silver;
 }
