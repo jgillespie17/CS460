@@ -13,6 +13,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 AppSettingsSecrets.Config
+Requirements_simplified.txt
 
 
 # Build results
