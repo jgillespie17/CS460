@@ -109,7 +109,6 @@ INSERT INTO [dbo].[RaceResults]
 -- it has several FK's.  Think joins.
 
 -- We don't need this staging table anymore so clear it away
-
--- DROP TABLE [dbo].[AllData];
 */
+DROP TABLE [dbo].[AllData];
 
