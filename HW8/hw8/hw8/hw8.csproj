@@ -128,16 +128,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AthletesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeetsController.cs" />
+    <Compile Include="Controllers\RaceResultsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Athlete.cs" />
-    <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\Meet.cs" />
+    <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\RaceResult.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="DAL\TFContext.cs" />
+    <Compile Include="Models\ViewModel\TFViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,9 +183,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Athletes\Create.cshtml" />
+    <Content Include="Views\Athletes\Details.cshtml" />
+    <Content Include="Views\Athletes\Index.cshtml" />
+    <Content Include="Views\RaceResults\Create.cshtml" />
+    <Content Include="Views\RaceResults\Details.cshtml" />
+    <Content Include="Views\RaceResults\Index.cshtml" />
+    <Content Include="Views\Meets\Create.cshtml" />
+    <Content Include="Views\Meets\Details.cshtml" />
+    <Content Include="Views\Meets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

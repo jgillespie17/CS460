@@ -18,10 +18,12 @@ namespace hw8.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Name")]
         public string NAME { get; set; }
 
         [Required]
         [StringLength(20)]
+        [Display(Name = "Gender")]
         public string GENDER { get; set; }
 
         public int? TeamID { get; set; }

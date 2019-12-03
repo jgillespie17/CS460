@@ -1,4 +1,4 @@
-namespace hw8.Models
+﻿namespace hw8.Models
 {
     using System;
     using System.Collections.Generic;
@@ -13,16 +13,15 @@ namespace hw8.Models
         {
             RaceResults = new HashSet<RaceResult>();
         }
-
         public int ID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string DATE { get; set; }
+        public string LOCATION { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string LOCATION { get; set; }
+        public string DATE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RaceResult> RaceResults { get; set; }

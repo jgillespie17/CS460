@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using hw8.DAL;
+using hw8.Models;
+using hw8.Models.ViewModel;
 
 namespace hw8.Controllers
 {
@@ -13,17 +16,20 @@ namespace hw8.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Create()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Create(TFViewModel tfViewModel)
         {
-            ViewBag.Message = "Your contact page.";
 
+            return View(tfViewModel);
+        }
+
+        public ActionResult List()
+        {
             return View();
         }
     }
