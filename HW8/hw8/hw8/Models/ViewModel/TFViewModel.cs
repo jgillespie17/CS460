@@ -9,39 +9,58 @@ namespace hw8.Models.ViewModel
 {
     public class TFViewModel
     {
-        public TFViewModel(RaceResult raceResult, Athlete athlete, Meet meet)
+        public TFViewModel(IEnumerable<RaceResult> raceResult)
         {
-            RaceResultAthleteName = athlete.NAME;
-            RaceResultAthleteGender = raceResult.Athlete.GENDER;
+            RaceResultMeetDate = raceResult.Select(x => x.Meet.DATE);
+            RaceResultMeetLocation = raceResult.Select(x => x.Meet.LOCATION);
 
-            RaceResultMeetDate = raceResult.Meet.DATE;
-            RaceResultMeetLocation = raceResult.Meet.LOCATION;
+            RaceResultEventName = raceResult.Select(x => x.NAME);
+            RaceResultTime = raceResult.Select(x => x.TIME);
 
-            RaceResultEventName = raceResult.NAME;
-            RaceResultTime = raceResult.TIME;
-
-            RaceResultAthleteTeam = raceResult.Athlete.Team.NAME;
+            RaceData data = new RaceData();
+            List<RaceData> listData = new List<RaceData>();
+            for(int i = 0; i < raceResult.Count(); i++)
+            {
+                data.Date = RaceResultMeetDate.ElementAt(i);
+                data.Location = RaceResultMeetLocation.ElementAt(i);
+                data.EventName = RaceResultEventName.ElementAt(i);
+                data.Time = RaceResultTime.ElementAt(i);
+                listData.Add(data);
+            }
+            AthleteResult = listData;
 
         }
-        [Display(Name = "Athlete Name: ")]
-        public string RaceResultAthleteName { get; set; }
+        //[Display(Name = "Athlete Name: ")]
+        //public string RaceResultAthleteName { get; set; }
 
-        [Display(Name = "Athlete Team: ")]
-        public string RaceResultAthleteTeam { get; set; }
+        //[Display(Name = "Athlete Team: ")]
+        //public string RaceResultAthleteTeam { get; set; }
 
         [Display(Name = "Meet Location: ")]
-        public string RaceResultMeetLocation { get; set; }
+        public IEnumerable<string> RaceResultMeetLocation { get; set; }
 
         [Display(Name = "Event Name: ")]
-        public string RaceResultEventName { get; set; }
+        public IEnumerable<string> RaceResultEventName { get; set; }
 
         [Display(Name = "Result Time: ")]
-        public float RaceResultTime { get; set; }
+        public IEnumerable<float> RaceResultTime { get; set; }
 
         [Display(Name = "Meet Date: ")]
-        public string RaceResultMeetDate { get; set; }
+        public IEnumerable<string> RaceResultMeetDate { get; set; }
 
-        [Display(Name = "Event Gender: ")]
-        public string RaceResultAthleteGender { get; set; }
+        //[Display(Name = "Event Gender: ")]
+        //public string RaceResultAthleteGender { get; set; }
+
+        public IEnumerable<RaceData> AthleteResult { get; set; }
+
+        public struct RaceData
+        {
+            
+            public string Location { get; set; }
+            public string EventName { get; set; }
+            public float Time { get; set; }
+            public string Date { get; set; }
+        }
+
     }
 }

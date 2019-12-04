@@ -186,7 +186,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Athletes\Create.cshtml" />
-    <Content Include="Views\Athletes\Details.cshtml" />
     <Content Include="Views\Athletes\Index.cshtml" />
     <Content Include="Views\RaceResults\Create.cshtml" />
     <Content Include="Views\RaceResults\Details.cshtml" />
@@ -194,6 +193,9 @@
     <Content Include="Views\Meets\Create.cshtml" />
     <Content Include="Views\Meets\Details.cshtml" />
     <Content Include="Views\Meets\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\RaceResults\View.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

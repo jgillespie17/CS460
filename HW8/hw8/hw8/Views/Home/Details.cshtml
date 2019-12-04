@@ -1,0 +1,90 @@
+﻿@model IEnumerable<hw8.Models.ViewModel.TFViewModel>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model  => model.RaceResultMeetDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceResultEventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceResultMeetLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceResultTime)
+        </th>
+    </tr>
+    @foreach(var item in Model.AthleteResult)
+    {
+        <tr>
+            <td>
+              
+            </td>
+        </tr>
+    }
+    <tr></tr>
+    @*@foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AthleteResult)
+            </td>
+            <td>
+               @item.eventName
+            </td>
+            <td>
+                @item.location
+            </td>
+            <td>
+                @item.time
+            </td>
+        </tr>
+    }*@
+</table>
+@*<div>
+    <h4>TFViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceResultMeetLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceResultMeetLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceResultEventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceResultEventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceResultTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceResultTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceResultMeetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceResultMeetDate)
+        </dd>
+
+    </dl>
+</div>*@
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
