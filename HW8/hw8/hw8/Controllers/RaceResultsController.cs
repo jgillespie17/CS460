@@ -45,7 +45,22 @@ namespace hw8.Controllers
             return View();
         }
 
-        // POST: RaceResults/Create
+        public ActionResult Results(int? AID)
+        {
+            IEnumerable<RaceResult> results = db.RaceResults.Where(x => x.AthleteID == AID).OrderBy(x => x.Meet.DATE);
+            var athletes = new List<KeyValuePair<string, int>>();
+            foreach (var athlete in db.Athletes)
+            {
+                athletes.Add(new KeyValuePair<string, int>(athlete.NAME, athlete.ID));
+            }
+
+            SelectList newList = new SelectList(athletes.Select(x => new { Text = x.Key, Value = x.Value }), "Value", "Text");
+            ViewBag.newList = newList;
+
+            return View(results);
+        }
+
+        // POST: R    aceResults/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,66 +79,6 @@ namespace hw8.Controllers
             return View(raceResult);
         }
 
-        // GET: RaceResults/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RaceResult raceResult = db.RaceResults.Find(id);
-            if (raceResult == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "NAME", raceResult.AthleteID);
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "DATE", raceResult.MeetID);
-            return View(raceResult);
-        }
-
-        // POST: RaceResults/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NAME,TIME,MeetID,AthleteID")] RaceResult raceResult)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(raceResult).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "NAME", raceResult.AthleteID);
-            ViewBag.MeetID = new SelectList(db.Meets, "ID", "DATE", raceResult.MeetID);
-            return View(raceResult);
-        }
-
-        // GET: RaceResults/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RaceResult raceResult = db.RaceResults.Find(id);
-            if (raceResult == null)
-            {
-                return HttpNotFound();
-            }
-            return View(raceResult);
-        }
-
-        // POST: RaceResults/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            RaceResult raceResult = db.RaceResults.Find(id);
-            db.RaceResults.Remove(raceResult);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

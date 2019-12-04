@@ -195,7 +195,7 @@
     <Content Include="Views\Meets\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
-    <Content Include="Views\RaceResults\View.cshtml" />
+    <Content Include="Views\RaceResults\Results.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
