@@ -14,28 +14,6 @@ namespace hw8.Controllers
     public class MeetsController : Controller
     {
         private TFContext db = new TFContext();
-
-        // GET: Meets
-        public ActionResult Index()
-        {
-            return View(db.Meets.ToList());
-        }
-
-        // GET: Meets/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Meet meet = db.Meets.Find(id);
-            if (meet == null)
-            {
-                return HttpNotFound();
-            }
-            return View(meet);
-        }
-
         // GET: Meets/Create
         public ActionResult Create()
         {
@@ -53,13 +31,10 @@ namespace hw8.Controllers
             {
                 db.Meets.Add(meet);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             return View(meet);
         }
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

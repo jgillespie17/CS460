@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using hw8.DAL;
 using hw8.Models;
+using Newtonsoft.Json;
 
 namespace hw8.Controllers
 {
@@ -15,27 +16,6 @@ namespace hw8.Controllers
     {
         private TFContext db = new TFContext();
 
-        // GET: RaceResults
-        public ActionResult Index()
-        {
-            var raceResults = db.RaceResults.Include(r => r.Athlete).Include(r => r.Meet);
-            return View(raceResults.ToList());
-        }
-
-        // GET: RaceResults/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RaceResult raceResult = db.RaceResults.Find(id);
-            if (raceResult == null)
-            {
-                return HttpNotFound();
-            }
-            return View(raceResult);
-        }
 
         // GET: RaceResults/Create
         public ActionResult Create()
@@ -47,15 +27,24 @@ namespace hw8.Controllers
 
         public ActionResult Results(int? AID)
         {
+            if(AID != null)
+            {
+                ViewBag.Success = true;
+                IEnumerable<string> events = db.RaceResults.Where(x => x.AthleteID == 7).Select(x => x.NAME).Distinct();
+                ViewBag.EventNameList = events;
+                //Dont do kids, stay in school
+                ViewBag.AthleteID = AID;
+            }
             IEnumerable<RaceResult> results = db.RaceResults.Where(x => x.AthleteID == AID).OrderBy(x => x.Meet.DATE);
             var athletes = new List<KeyValuePair<string, int>>();
             foreach (var athlete in db.Athletes)
             {
                 athletes.Add(new KeyValuePair<string, int>(athlete.NAME, athlete.ID));
             }
-
-            SelectList newList = new SelectList(athletes.Select(x => new { Text = x.Key, Value = x.Value }), "Value", "Text");
-            ViewBag.newList = newList;
+            SelectList AthleteNameList = new SelectList(athletes.Select(x => new { Text = x.Key, Value = x.Value }), "Value", "Text");
+            //List<string> EventNameList = events;
+            ViewBag.AthleteNameList = AthleteNameList;
+            
 
             return View(results);
         }
@@ -71,14 +60,12 @@ namespace hw8.Controllers
             {
                 db.RaceResults.Add(raceResult);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             ViewBag.AthleteID = new SelectList(db.Athletes, "ID", "NAME", raceResult.AthleteID);
             ViewBag.MeetID = new SelectList(db.Meets, "ID", "DATE", raceResult.MeetID);
             return View(raceResult);
         }
-
 
         protected override void Dispose(bool disposing)
         {
@@ -87,6 +74,18 @@ namespace hw8.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult ApiMethod(int AID, string Event)
+        { 
+            var results = db.Meets.Join(db.RaceResults, m => m.ID, r => r.MeetID, (m, r) => new { Time = r.TIME, Date = m.DATE, Athlete = r.Athlete.ID, Event = r.NAME }).Where(x => x.Athlete == AID).Where(x => x.Event == Event);
+            string jsonString = JsonConvert.SerializeObject(results, Formatting.Indented);
+            return new ContentResult
+            {
+                Content = jsonString,
+                ContentType = "application/json",
+                ContentEncoding = System.Text.Encoding.UTF8
+            };
         }
     }
 }

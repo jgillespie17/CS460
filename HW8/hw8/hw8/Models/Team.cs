@@ -18,6 +18,7 @@ namespace hw8.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Team Name")]
         public string NAME { get; set; }
 
         public int? CoachID { get; set; }

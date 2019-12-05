@@ -12,12 +12,15 @@ namespace hw8.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Event Name")]
         public string NAME { get; set; }
 
+        [Display(Name = "Result Time")]
         public float TIME { get; set; }
 
         public int? MeetID { get; set; }
 
+        [Display(Name = "Athlete")]
         public int? AthleteID { get; set; }
 
         public virtual Athlete Athlete { get; set; }

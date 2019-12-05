@@ -21,6 +21,3 @@ GO
 /****** Object:  Table [dbo].[Athletes]    Script Date: 12/1/2019 2:10:37 PM ******/
 DROP TABLE [dbo].[Athletes]
 GO
-/****** Object:  Table [dbo].[AllData]    Script Date: 12/1/2019 2:10:37 PM ******/
-DROP TABLE [dbo].[AllData]
-GO

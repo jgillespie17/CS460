@@ -17,10 +17,12 @@
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Meet Location")]
         public string LOCATION { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Meet Date")]
         public string DATE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

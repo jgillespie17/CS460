@@ -136,6 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Athlete.cs" />
+    <Compile Include="Models\GraphInfo.cs" />
     <Compile Include="Models\Meet.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\RaceResult.cs" />
@@ -162,6 +163,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -186,16 +188,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Athletes\Create.cshtml" />
-    <Content Include="Views\Athletes\Index.cshtml" />
     <Content Include="Views\RaceResults\Create.cshtml" />
-    <Content Include="Views\RaceResults\Details.cshtml" />
-    <Content Include="Views\RaceResults\Index.cshtml" />
     <Content Include="Views\Meets\Create.cshtml" />
-    <Content Include="Views\Meets\Details.cshtml" />
-    <Content Include="Views\Meets\Index.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\RaceResults\Results.cshtml" />
+    <Content Include="Views\Athletes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
